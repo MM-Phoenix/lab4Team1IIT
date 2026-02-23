@@ -16,7 +16,18 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-    
+
+      - name: Lint HTML  
+        run: |  
+          sudo apt update  
+          sudo apt install -y tidy  
+          tidy -e index.html  
+  
+      - name: Lint Dockerfile  
+        uses: hadolint/hadolint-action@v3.1.0  
+        with:  
+          dockerfile: Dockerfile
+          
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
