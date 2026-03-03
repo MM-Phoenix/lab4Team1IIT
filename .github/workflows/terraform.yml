@@ -18,6 +18,20 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Terraform Import Key Pair
+        run: terraform import aws_key_pair.lab4_key lab4-key
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+
+      - name: Terraform Import Security Group
+        run: terraform import aws_security_group.lab4_sg sg-0107a71d9ed33c699
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+
       - name: Terraform Plan
         run: terraform plan
         env:
