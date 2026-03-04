@@ -5,6 +5,10 @@ provider "aws" {
 resource "aws_key_pair" "lab4_key" {
   key_name   = "lab4-key"
   public_key = file("keyforlab4.pub")
+
+  lifecycle {
+    prevent_destroy = false
+  }
 }
 
 resource "aws_security_group" "lab4_sg" {
@@ -30,6 +34,10 @@ resource "aws_security_group" "lab4_sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    prevent_destroy = false
   }
 }
 
