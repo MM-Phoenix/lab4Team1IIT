@@ -11,7 +11,7 @@ resource "aws_key_pair" "lab4_key" {
   }
 }
 
-resource "aws_security_group" "lab4_sg" {
+resource "aws_security_group" "lab4-security-group" {
   name        = "lab4-security-group"
   description = "Allow SSH and HTTP"
 
