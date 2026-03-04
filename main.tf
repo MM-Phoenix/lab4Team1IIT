@@ -45,7 +45,7 @@ resource "aws_instance" "lab4_instance" {
   ami           = "ami-0c1ac8a41498c1a9c"
   instance_type = "t3.micro"
   key_name      = aws_key_pair.lab4_key.key_name
-  security_groups = [aws_security_group.lab4_sg.name]
+  security_groups = [aws_security_group.lab4-security-group.name]
 
   user_data = <<EOF
 #!/bin/bash
